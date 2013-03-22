@@ -21,6 +21,8 @@
 		1A7902E916173FCD005FB132 /* SDL.framework in Copy Frameworks into .app bundle */ = {isa = PBXBuildFile; fileRef = 1A7902DE1617370F005FB132 /* SDL.framework */; };
 		1A7902F11617612A005FB132 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1A7902F0161760F8005FB132 /* main.lua */; };
 		1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A554C7316FD0E3C007ACD72 /* libhamilton.a */; };
+		1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */; };
+		1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1A42FD87160DF06700807A51;
 			remoteInfo = alice;
+		};
+		1A7BEABE16FD23CF008B3BCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A554C5C16FCF3F5007ACD72 /* Hamilton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A7BEAAB16FD1BA8008B3BCB;
+			remoteInfo = hamiltoncli;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -84,6 +93,8 @@
 		1A7BEAA316FD1647008B3BCB /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		1A7BEAA416FD1647008B3BCB /* Global.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
 		1A7BEAA516FD1647008B3BCB /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */,
+				1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */,
 				1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */,
 				1A7902E516173915005FB132 /* OpenGL.framework in Frameworks */,
 				1A7902DF1617370F005FB132 /* Lua.framework in Frameworks */,
@@ -109,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				1A554C7316FD0E3C007ACD72 /* libhamilton.a */,
+				1A7BEABF16FD23CF008B3BCB /* hamiltoncli */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,12 +150,14 @@
 		1A7902A61617341F005FB132 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1A7902E416173915005FB132 /* OpenGL.framework */,
-				1A7902DC1617370F005FB132 /* Lua.framework */,
-				1A7902DD1617370F005FB132 /* SDL_image.framework */,
-				1A7902DE1617370F005FB132 /* SDL.framework */,
 				1A7902A71617341F005FB132 /* Cocoa.framework */,
+				1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */,
+				1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */,
+				1A7902DC1617370F005FB132 /* Lua.framework */,
+				1A7902E416173915005FB132 /* OpenGL.framework */,
 				1A7902A91617341F005FB132 /* Other Frameworks */,
+				1A7902DE1617370F005FB132 /* SDL.framework */,
+				1A7902DD1617370F005FB132 /* SDL_image.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,6 +292,13 @@
 			fileType = archive.ar;
 			path = libalice.a;
 			remoteRef = 1A7902D3161735F7005FB132 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1A7BEABF16FD23CF008B3BCB /* hamiltoncli */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = hamiltoncli;
+			remoteRef = 1A7BEABE16FD23CF008B3BCB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
