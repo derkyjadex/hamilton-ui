@@ -23,6 +23,7 @@
 		1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A554C7316FD0E3C007ACD72 /* libhamilton.a */; };
 		1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */; };
 		1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */; };
+		1A7BEAC516FDB3AE008B3BCB /* cmds.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BEAC416FDB3AE008B3BCB /* cmds.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		1A7BEAA516FD1647008B3BCB /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
 		1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		1A7BEAC416FDB3AE008B3BCB /* cmds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmds.c; sourceTree = "<group>"; };
+		1A7BEAC616FDB6D1008B3BCB /* cmds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmds.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,9 +178,11 @@
 		1A7902AD1617341F005FB132 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				1A7902E3161737BD005FB132 /* osx */,
+				1A7BEAC416FDB3AE008B3BCB /* cmds.c */,
+				1A7BEAC616FDB6D1008B3BCB /* cmds.h */,
 				1A7902D71617361C005FB132 /* main.c */,
 				1A7902F0161760F8005FB132 /* main.lua */,
+				1A7902E3161737BD005FB132 /* osx */,
 			);
 			name = Source;
 			path = src;
@@ -321,6 +326,7 @@
 			files = (
 				1A7902D81617361C005FB132 /* main.c in Sources */,
 				1A7902DB161736AE005FB132 /* SDLMain.m in Sources */,
+				1A7BEAC516FDB3AE008B3BCB /* cmds.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
