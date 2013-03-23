@@ -13,8 +13,9 @@
 #include "hamilton/lib.h"
 #include "hamilton/audio.h"
 #include "hamilton/midi.h"
+#include "hamilton/core_synths.h"
 
-int mda_dx10_register(void);
+#include "cmds.h"
 
 static volatile bool finished = false;
 
@@ -56,38 +57,37 @@ int main(int argc, char *argv[])
 	BEGIN()
 
 	AlHost *host = NULL;
+	SDL_Thread *midiThread = NULL;
 
 	TRY(al_host_systems_init());
 	TRY(al_host_init(&host));
 
 	TRY(hm_band_init());
 	TRY(mda_dx10_register());
-	int n;
-	const HmSynthType *synths = hm_lib_get_synths(&n);
-	TRY(hm_band_set_channel_synth(0, &synths[0]));
-
 	TRY(hm_midi_init());
 	TRY(hm_audio_init());
 
-	hm_audio_start();
-
-	SDL_Thread *thread = SDL_CreateThread(midi_thread, NULL);
-	if (!thread)
-		THROW(AL_ERROR_GENERIC);
+	TRY(hm_commands_init(al_host_get_commands(host)));
 
 	TRY(al_host_run_script(host, "main.lua"));
+
+	midiThread = SDL_CreateThread(midi_thread, NULL);
+	if (!midiThread)
+		THROW(AL_ERROR_GENERIC);
+
+	hm_audio_start();
 
 	al_host_run(host);
 
 	finished = true;
-	SDL_WaitThread(thread, NULL);
+	SDL_WaitThread(midiThread, NULL);
 
 	PASS(
-		 hm_audio_free();
-		 hm_midi_free();
-		 hm_band_free();
+		hm_audio_free();
+		hm_midi_free();
+		hm_band_free();
 
-		 al_host_free(host);
+		al_host_free(host);
 		al_host_systems_free();
 	)
 }

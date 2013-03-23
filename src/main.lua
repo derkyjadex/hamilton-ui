@@ -18,3 +18,10 @@ local function HamiltonUI(root, app)
 end
 
 HamiltonUI(Widget.root(), Hamilton())
+
+local synths = {commands.get_synths()}
+for i,s in ipairs(synths) do
+	print(s)
+end
+
+commands.set_synth(0, synths[1])
