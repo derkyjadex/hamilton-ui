@@ -41,12 +41,25 @@ static int cmd_set_synth(lua_State *L)
 	return 0;
 }
 
+static int cmd_send_cc(lua_State *L)
+{
+	HmBand *band = lua_touserdata(L, lua_upvalueindex(1));
+	int channel = (int)luaL_checkinteger(L, 1);
+	int control = (int)luaL_checkinteger(L, 2);
+	float value = luaL_checknumber(L, 3);
+
+	hm_band_send_cc(band, 0, channel, control, value);
+
+	return 0;
+}
+
 AlError hm_commands_init(AlCommands *commands, HmBand *band)
 {
 	BEGIN()
 
 	al_commands_register(commands, "get_synths", cmd_get_synths, band, NULL);
 	al_commands_register(commands, "set_synth", cmd_set_synth, band, NULL);
+	al_commands_register(commands, "send_cc", cmd_send_cc, band, NULL);
 
 	PASS()
 }
