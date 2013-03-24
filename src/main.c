@@ -19,8 +19,10 @@
 
 static volatile bool finished = false;
 
-static int midi_thread(void *_)
+static int midi_thread(void *data)
 {
+	HmBand *band = (HmBand *)data;
+
 	while (!finished) {
 		uint8_t status, data1, data2;
 		while (hm_midi_read(&status, &data1, &data2) > 0) {
@@ -29,19 +31,19 @@ static int midi_thread(void *_)
 
 			switch (type) {
 				case 0x8:
-					hm_band_send_note(0, channel, false, data1, data2 / 127.0);
+					hm_band_send_note(band, 0, channel, false, data1, data2 / 127.0);
 					break;
 
 				case 0x9:
-					hm_band_send_note(0, channel, true, data1, data2 / 127.0);
+					hm_band_send_note(band, 0, channel, true, data1, data2 / 127.0);
 					break;
 
 				case 0xB:
-					hm_band_send_cc(0, channel, data1, data2 / 127.0);
+					hm_band_send_cc(band, 0, channel, data1, data2 / 127.0);
 					break;
 
 				case 0xC:
-					hm_band_send_patch(0, channel, data1);
+					hm_band_send_patch(band, 0, channel, data1);
 					break;
 			}
 		}
@@ -58,20 +60,21 @@ int main(int argc, char *argv[])
 
 	AlHost *host = NULL;
 	SDL_Thread *midiThread = NULL;
+	HmBand *band = NULL;
 
 	TRY(al_host_systems_init());
 	TRY(al_host_init(&host));
 
-	TRY(hm_band_init());
-	TRY(mda_dx10_register());
+	TRY(hm_band_init(&band));
+	TRY(mda_dx10_register(band));
 	TRY(hm_midi_init());
-	TRY(hm_audio_init());
+	TRY(hm_audio_init(band));
 
-	TRY(hm_commands_init(al_host_get_commands(host)));
+	TRY(hm_commands_init(al_host_get_commands(host), band));
 
 	TRY(al_host_run_script(host, "main.lua"));
 
-	midiThread = SDL_CreateThread(midi_thread, NULL);
+	midiThread = SDL_CreateThread(midi_thread, band);
 	if (!midiThread)
 		THROW(AL_ERROR_GENERIC);
 
@@ -85,7 +88,7 @@ int main(int argc, char *argv[])
 	PASS(
 		hm_audio_free();
 		hm_midi_free();
-		hm_band_free();
+		hm_band_free(band);
 
 		al_host_free(host);
 		al_host_systems_free();

@@ -9,6 +9,6 @@
 
 #include "albase/commands.h"
 
-AlError hm_commands_init(AlCommands *commands);
+AlError hm_commands_init(AlCommands *commands, HmBand *band);
 
 #endif
