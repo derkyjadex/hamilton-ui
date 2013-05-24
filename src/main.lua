@@ -3,6 +3,8 @@
 -- Released under the MIT license <http://opensource.org/licenses/MIT>.
 -- See COPYING for details.
 
+local host = require 'host'
+
 local function CC(channel, control)
 	local self = Observable(0)
 	self.changed:add(function(x)
@@ -39,7 +41,7 @@ end
 
 local function HamiltonUI(root, app)
 	root:fill_colour(0.2, 0.2, 0.2, 1.0)
-		:bind_down(commands.exit)
+		:bind_down(host.exit)
 
 	for i, cc in ipairs(app.controls) do
 		SliderWidget():add_to(root)
