@@ -7,8 +7,9 @@
 #ifndef _HAMILTON_UI_H
 #define _HAMILTON_UI_H
 
-#include "albase/commands.h"
+#include "albase/lua.h"
 
-AlError hm_commands_init(AlCommands *commands, HmBand *band);
+extern AlLuaKey bandKey;
+int luaopen_hamilton(lua_State *L);
 
 #endif

@@ -70,7 +70,11 @@ int main(int argc, char *argv[])
 	TRY(hm_midi_init());
 	TRY(hm_audio_init(band));
 
-	TRY(hm_commands_init(al_host_get_commands(host), band));
+	lua_State *L = al_host_get_lua(host);
+	lua_pushlightuserdata(L, &bandKey);
+	lua_pushlightuserdata(L, band);
+	lua_settable(L, LUA_REGISTRYINDEX);
+	luaL_requiref(L, "hamilton", luaopen_hamilton, false);
 
 	TRY(al_host_run_script(host, "main.lua"));
 

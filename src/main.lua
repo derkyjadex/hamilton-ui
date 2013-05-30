@@ -4,11 +4,12 @@
 -- See COPYING for details.
 
 local host = require 'host'
+local hm = require 'hamilton'
 
 local function CC(channel, control)
 	local self = Observable(0)
 	self.changed:add(function(x)
-		commands.send_cc(channel, control, x)
+		hm.send_cc(channel, control, x)
 	end)
 
 	return self
@@ -54,5 +55,5 @@ end
 
 HamiltonUI(Widget.root(), Hamilton())
 
-local synths = {commands.get_synths()}
-commands.set_synth(0, synths[1])
+local synths = {hm.get_synths()}
+hm.set_synth(0, synths[1])

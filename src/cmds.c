@@ -6,8 +6,9 @@
 
 #include "hamilton/lib.h"
 #include "hamilton/band.h"
-#include "albase/commands.h"
 #include "cmds.h"
+
+AlLuaKey bandKey;
 
 static int cmd_get_synths(lua_State *L)
 {
@@ -53,13 +54,19 @@ static int cmd_send_cc(lua_State *L)
 	return 0;
 }
 
-AlError hm_commands_init(AlCommands *commands, HmBand *band)
+static const luaL_Reg lib[] = {
+	{"get_synths", cmd_get_synths},
+	{"set_synth", cmd_set_synth},
+	{"send_cc", cmd_send_cc},
+	{NULL, NULL}
+};
+
+int luaopen_hamilton(lua_State *L)
 {
-	BEGIN()
+	luaL_newlibtable(L, lib);
+	lua_pushlightuserdata(L, &bandKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	luaL_setfuncs(L, lib, 1);
 
-	al_commands_register(commands, "get_synths", cmd_get_synths, band, NULL);
-	al_commands_register(commands, "set_synth", cmd_set_synth, band, NULL);
-	al_commands_register(commands, "send_cc", cmd_send_cc, band, NULL);
-
-	PASS()
+	return 1;
 }
