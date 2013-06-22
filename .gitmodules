@@ -1,6 +1,3 @@
-[submodule "alice"]
-	path = alice
-	url = git@github.com:derkyjadex/alice.git
 [submodule "hamilton"]
 	path = hamilton
 	url = git@github.com:derkyjadex/hamilton.git

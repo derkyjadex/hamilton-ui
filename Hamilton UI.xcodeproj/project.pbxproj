@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0F50F2176DDBD500D24C94 /* Jackmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0F50F1176DDBD500D24C94 /* Jackmp.framework */; };
 		1A7902A81617341F005FB132 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902A71617341F005FB132 /* Cocoa.framework */; };
-		1A7902D51617360C005FB132 /* libalbase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902D2161735F7005FB132 /* libalbase.a */; };
-		1A7902D61617360C005FB132 /* libalice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902D4161735F7005FB132 /* libalice.a */; };
 		1A7902D81617361C005FB132 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A7902D71617361C005FB132 /* main.c */; };
 		1A7902DB161736AE005FB132 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7902DA161736AE005FB132 /* SDLMain.m */; };
 		1A7902DF1617370F005FB132 /* Lua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902DC1617370F005FB132 /* Lua.framework */; };
@@ -24,6 +23,8 @@
 		1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */; };
 		1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */; };
 		1A7BEAC516FDB3AE008B3BCB /* cmds.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A7BEAC416FDB3AE008B3BCB /* cmds.c */; };
+		1AC0D780177626C800290C88 /* libalbase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC0D77F177626C800290C88 /* libalbase.a */; };
+		1AC0D782177626CE00290C88 /* libalice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC0D781177626CE00290C88 /* libalice.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,20 +34,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1A554C6916FD014E007ACD72;
 			remoteInfo = hamilton;
-		};
-		1A7902D1161735F7005FB132 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1A7902C9161735F7005FB132 /* Alice.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1AFBAD0F14DD4D1300E28C0A;
-			remoteInfo = albase;
-		};
-		1A7902D3161735F7005FB132 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1A7902C9161735F7005FB132 /* Alice.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A42FD87160DF06700807A51;
-			remoteInfo = alice;
 		};
 		1A7BEABE16FD23CF008B3BCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A0F50F1176DDBD500D24C94 /* Jackmp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Jackmp.framework; path = /System/Library/Frameworks/Jackmp.framework; sourceTree = "<absolute>"; };
 		1A554C5C16FCF3F5007ACD72 /* Hamilton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hamilton.xcodeproj; path = hamilton/Hamilton.xcodeproj; sourceTree = "<group>"; };
 		1A7902A31617341F005FB132 /* Hamilton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hamilton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7902A71617341F005FB132 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -81,14 +69,13 @@
 		1A7902AB1617341F005FB132 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1A7902AC1617341F005FB132 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1A7902AF1617341F005FB132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A7902C9161735F7005FB132 /* Alice.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alice.xcodeproj; path = alice/Alice.xcodeproj; sourceTree = "<group>"; };
 		1A7902D71617361C005FB132 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		1A7902D9161736AE005FB132 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = alice/src/osx/SDLMain.h; sourceTree = SOURCE_ROOT; };
-		1A7902DA161736AE005FB132 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = alice/src/osx/SDLMain.m; sourceTree = SOURCE_ROOT; };
+		1A7902D9161736AE005FB132 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		1A7902DA161736AE005FB132 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		1A7902DC1617370F005FB132 /* Lua.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lua.framework; path = /Library/Frameworks/Lua.framework; sourceTree = "<absolute>"; };
 		1A7902DD1617370F005FB132 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = /Library/Frameworks/SDL_image.framework; sourceTree = "<absolute>"; };
 		1A7902DE1617370F005FB132 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
-		1A7902E2161737AB005FB132 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = alice/src/osx/Prefix.pch; sourceTree = SOURCE_ROOT; };
+		1A7902E2161737AB005FB132 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		1A7902E416173915005FB132 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		1A7902F0161760F8005FB132 /* main.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; };
 		1A7BEAA316FD1647008B3BCB /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -98,6 +85,8 @@
 		1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
 		1A7BEAC416FDB3AE008B3BCB /* cmds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmds.c; sourceTree = "<group>"; };
 		1A7BEAC616FDB6D1008B3BCB /* cmds.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmds.h; sourceTree = "<group>"; };
+		1AC0D77F177626C800290C88 /* libalbase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libalbase.a; path = "../../Library/Developer/Xcode/DerivedData/Hamilton_UI-ayqjxbngkxrcrkcshxsmkywlufht/Build/Products/Debug/libalbase.a"; sourceTree = "<group>"; };
+		1AC0D781177626CE00290C88 /* libalice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libalice.a; path = "../../Library/Developer/Xcode/DerivedData/Hamilton_UI-ayqjxbngkxrcrkcshxsmkywlufht/Build/Products/Debug/libalice.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC0D782177626CE00290C88 /* libalice.a in Frameworks */,
+				1AC0D780177626C800290C88 /* libalbase.a in Frameworks */,
+				1A0F50F2176DDBD500D24C94 /* Jackmp.framework in Frameworks */,
 				1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */,
 				1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */,
 				1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */,
@@ -112,8 +104,6 @@
 				1A7902DF1617370F005FB132 /* Lua.framework in Frameworks */,
 				1A7902E01617370F005FB132 /* SDL_image.framework in Frameworks */,
 				1A7902E11617370F005FB132 /* SDL.framework in Frameworks */,
-				1A7902D51617360C005FB132 /* libalbase.a in Frameworks */,
-				1A7902D61617360C005FB132 /* libalice.a in Frameworks */,
 				1A7902A81617341F005FB132 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				1A554C5C16FCF3F5007ACD72 /* Hamilton.xcodeproj */,
-				1A7902C9161735F7005FB132 /* Alice.xcodeproj */,
 				1A7902AD1617341F005FB132 /* Source */,
 				1A7902AE1617341F005FB132 /* Supporting Files */,
 				1A7902A61617341F005FB132 /* Frameworks */,
@@ -153,6 +142,9 @@
 		1A7902A61617341F005FB132 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AC0D781177626CE00290C88 /* libalice.a */,
+				1AC0D77F177626C800290C88 /* libalbase.a */,
+				1A0F50F1176DDBD500D24C94 /* Jackmp.framework */,
 				1A7902A71617341F005FB132 /* Cocoa.framework */,
 				1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */,
 				1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */,
@@ -200,15 +192,6 @@
 			path = osx;
 			sourceTree = "<group>";
 		};
-		1A7902CA161735F7005FB132 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1A7902D2161735F7005FB132 /* libalbase.a */,
-				1A7902D4161735F7005FB132 /* libalice.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1A7902E3161737BD005FB132 /* osx */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,7 +200,7 @@
 				1A7902DA161736AE005FB132 /* SDLMain.m */,
 			);
 			name = osx;
-			path = ../alice/src/osx;
+			path = ../hamilton/alice/src/osx;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +245,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1A7902CA161735F7005FB132 /* Products */;
-					ProjectRef = 1A7902C9161735F7005FB132 /* Alice.xcodeproj */;
-				},
-				{
 					ProductGroup = 1A554C5D16FCF3F5007ACD72 /* Products */;
 					ProjectRef = 1A554C5C16FCF3F5007ACD72 /* Hamilton.xcodeproj */;
 				},
@@ -283,20 +262,6 @@
 			fileType = archive.ar;
 			path = libhamilton.a;
 			remoteRef = 1A554C7216FD0E3C007ACD72 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1A7902D2161735F7005FB132 /* libalbase.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libalbase.a;
-			remoteRef = 1A7902D1161735F7005FB132 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1A7902D4161735F7005FB132 /* libalice.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libalice.a;
-			remoteRef = 1A7902D3161735F7005FB132 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1A7BEABF16FD23CF008B3BCB /* hamiltoncli */ = {
