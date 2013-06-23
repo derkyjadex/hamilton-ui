@@ -14,8 +14,7 @@
 #include "hamilton/audio.h"
 #include "hamilton/midi.h"
 #include "hamilton/core_synths.h"
-
-#include "cmds.h"
+#include "hamilton/cmds.h"
 
 static volatile bool finished = false;
 
@@ -26,25 +25,24 @@ static int midi_thread(void *data)
 	while (!finished) {
 		uint8_t status, data1, data2;
 		while (hm_midi_read(&status, &data1, &data2) > 0) {
-			uint32_t time = SDL_GetTicks();
 			uint8_t type = status >> 4;
 			uint8_t channel = status & 0x0F;
 
 			switch (type) {
 				case 0x8:
-					hm_band_send_note(band, time, channel, false, data1, data2 / 127.0);
+					hm_band_send_note(band, channel, false, data1, data2 / 127.0);
 					break;
 
 				case 0x9:
-					hm_band_send_note(band, time, channel, true, data1, data2 / 127.0);
+					hm_band_send_note(band, channel, true, data1, data2 / 127.0);
 					break;
 
 				case 0xB:
-					hm_band_send_cc(band, time, channel, data1, data2 / 127.0);
+					hm_band_send_cc(band, channel, data1, data2 / 127.0);
 					break;
 
 				case 0xC:
-					hm_band_send_patch(band, time, channel, data1);
+					hm_band_send_patch(band, channel, data1);
 					break;
 			}
 		}
@@ -71,16 +69,11 @@ int main(int argc, char *argv[])
 	TRY(hm_midi_init());
 	TRY(hm_audio_init(band));
 
-	lua_State *L = al_host_get_lua(host);
-	lua_pushlightuserdata(L, &bandKey);
-	lua_pushlightuserdata(L, band);
-	lua_settable(L, LUA_REGISTRYINDEX);
-	luaL_requiref(L, "hamilton", luaopen_hamilton, false);
+	hm_load_cmds(al_host_get_lua(host), band);
 
 	TRY(al_host_run_script(host, "main.lua"));
 
 	hm_audio_start();
-	hm_band_reset_time(band, SDL_GetTicks());
 
 	midiThread = SDL_CreateThread(midi_thread, band);
 	if (!midiThread)
