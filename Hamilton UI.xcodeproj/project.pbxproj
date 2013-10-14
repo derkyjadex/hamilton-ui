@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A0F50F2176DDBD500D24C94 /* Jackmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0F50F1176DDBD500D24C94 /* Jackmp.framework */; };
 		1A1A332917DCF43B005BFA9B /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A332717DCF43B005BFA9B /* SDL2.framework */; };
 		1A1A332A17DCF43B005BFA9B /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A332817DCF43B005BFA9B /* SDL2_image.framework */; };
 		1A7902A81617341F005FB132 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902A71617341F005FB132 /* Cocoa.framework */; };
@@ -87,7 +86,6 @@
 				1A1A332A17DCF43B005BFA9B /* SDL2_image.framework in Frameworks */,
 				1AC0D782177626CE00290C88 /* libalice.a in Frameworks */,
 				1AC0D780177626C800290C88 /* libalbase.a in Frameworks */,
-				1A0F50F2176DDBD500D24C94 /* Jackmp.framework in Frameworks */,
 				1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */,
 				1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */,
 				1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */,
@@ -275,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A7BEAA316FD1647008B3BCB /* Debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 			};
 			name = Debug;
 		};
@@ -282,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A7BEAA516FD1647008B3BCB /* Release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 			};
 			name = Release;
 		};
