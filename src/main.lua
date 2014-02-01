@@ -1,5 +1,5 @@
 -- main.lua
--- Copyright (c) 2013 James Deery
+-- Copyright (c) 2013-2014 James Deery
 -- Released under the MIT license <http://opensource.org/licenses/MIT>.
 -- See COPYING for details.
 
@@ -13,13 +13,47 @@ local function Hamilton()
 	return self
 end
 
+local Icons = {
+	play = Model({
+		  8.00,   0.00, 0,
+		 -6.00,   8.00, 0,
+		 -6.00,  -8.00, 0,
+	}),
+	pause = Model({
+		 -2.00,   8.00, 0,
+		 -8.00,   8.00, 0,
+		 -8.00,  -8.00, 0,
+		 -2.00,  -8.00, 0
+		}, {
+		  8.00,   8.00, 0,
+		  2.00,   8.00, 0,
+		  2.00,  -8.00, 0,
+		  8.00,  -8.00, 0
+	}),
+	exit = Model({
+		  0.00,   3.00, 0,
+		 -8.00,  11.00, 0,
+		-11.00,   8.00, 0,
+		 -3.00,   0.00, 0,
+		-11.00,  -8.00, 0,
+		 -8.00, -11.00, 0,
+		  0.00,  -3.00, 0,
+		  8.00, -11.00, 0,
+		 11.00,  -8.00, 0,
+		  3.00,   0.00, 0,
+		 11.00,   8.00, 0,
+		  8.00,  11.00, 0
+	})
+}
+
 local function HamiltonUI(root, app)
 	root:fill_colour(0.2, 0.2, 0.2, 1.0)
-		:bind_down(host.exit)
 
 	Toolbar():add_to(root)
-		:add_button(0.1, 0.8, 0.3, hm.play)
-		:add_button(0.9, 0.7, 0.2, hm.pause)
+		:add_button(0.1, 0.8, 0.3, Icons.play, hm.play)
+		:add_button(0.9, 0.7, 0.2, Icons.pause, hm.pause)
+		:add_spacer()
+		:add_button(0.9, 0.3, 0.1, Icons.exit, host.exit)
 		:layout(10, nil, nil, nil, nil, 10)
 
 	return root
