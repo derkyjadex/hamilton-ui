@@ -14,6 +14,8 @@
 #include "hamilton/core_synths.h"
 #include "hamilton/cmds.h"
 
+#include "scripts.h"
+
 int main(int argc, char *argv[])
 {
 	BEGIN()
@@ -29,8 +31,15 @@ int main(int argc, char *argv[])
 	TRY(hm_midi_init());
 	TRY(hm_audio_init(band));
 
-	hm_load_cmds(al_host_get_lua(host), band);
-	TRY(al_host_run_script(host, "main.lua"));
+	lua_State *L = al_host_get_lua(host);
+	hm_load_cmds(L, band);
+
+	TRY(AL_SCRIPT_RUN(L, icons));
+	TRY(AL_SCRIPT_RUN(L, band_state));
+	TRY(AL_SCRIPT_RUN(L, play_head));
+	TRY(AL_SCRIPT_RUN(L, state_widget));
+
+	TRY(AL_SCRIPT_RUN(L, main));
 
 	hm_audio_start();
 

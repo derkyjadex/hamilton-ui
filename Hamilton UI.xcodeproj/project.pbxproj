@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A09672A19EB323F00C52AA1 /* scripts.derived.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A09672919EB323F00C52AA1 /* scripts.derived.c */; };
 		1A1A332917DCF43B005BFA9B /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A332717DCF43B005BFA9B /* SDL2.framework */; };
 		1A1A332A17DCF43B005BFA9B /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A332817DCF43B005BFA9B /* SDL2_image.framework */; };
 		1A7902A81617341F005FB132 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902A71617341F005FB132 /* Cocoa.framework */; };
 		1A7902D81617361C005FB132 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A7902D71617361C005FB132 /* main.c */; };
 		1A7902DF1617370F005FB132 /* Lua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902DC1617370F005FB132 /* Lua.framework */; };
 		1A7902E516173915005FB132 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7902E416173915005FB132 /* OpenGL.framework */; };
-		1A7902E716173FCD005FB132 /* Lua.framework in Copy Frameworks into .app bundle */ = {isa = PBXBuildFile; fileRef = 1A7902DC1617370F005FB132 /* Lua.framework */; };
-		1A7902F11617612A005FB132 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1A7902F0161760F8005FB132 /* main.lua */; };
+		1A7902E716173FCD005FB132 /* Lua.framework in Copy Frameworks into .app bundle */ = {isa = PBXBuildFile; fileRef = 1A7902DC1617370F005FB132 /* Lua.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1A7BEAA616FD18C7008B3BCB /* libhamilton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A554C7316FD0E3C007ACD72 /* libhamilton.a */; };
 		1A7BEAC116FD246D008B3BCB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC016FD246D008B3BCB /* CoreMIDI.framework */; };
 		1A7BEAC316FD2480008B3BCB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7BEAC216FD2480008B3BCB /* CoreAudio.framework */; };
@@ -54,6 +54,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A09671F19EB315600C52AA1 /* band_state.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = band_state.lua; sourceTree = "<group>"; };
+		1A09672019EB315600C52AA1 /* icons.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icons.lua; sourceTree = "<group>"; };
+		1A09672119EB315600C52AA1 /* play_head.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = play_head.lua; sourceTree = "<group>"; };
+		1A09672319EB315600C52AA1 /* state_widget.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = state_widget.lua; sourceTree = "<group>"; };
+		1A09672919EB323F00C52AA1 /* scripts.derived.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scripts.derived.c; sourceTree = "<group>"; };
+		1A09672B19EB326B00C52AA1 /* scripts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scripts.h; sourceTree = "<group>"; };
 		1A0F50F1176DDBD500D24C94 /* Jackmp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Jackmp.framework; path = /System/Library/Frameworks/Jackmp.framework; sourceTree = "<absolute>"; };
 		1A1A332717DCF43B005BFA9B /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
 		1A1A332817DCF43B005BFA9B /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = /Library/Frameworks/SDL2_image.framework; sourceTree = "<absolute>"; };
@@ -157,8 +163,14 @@
 		1A7902AD1617341F005FB132 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1A09671F19EB315600C52AA1 /* band_state.lua */,
+				1A09672019EB315600C52AA1 /* icons.lua */,
 				1A7902D71617361C005FB132 /* main.c */,
 				1A7902F0161760F8005FB132 /* main.lua */,
+				1A09672119EB315600C52AA1 /* play_head.lua */,
+				1A09672919EB323F00C52AA1 /* scripts.derived.c */,
+				1A09672B19EB326B00C52AA1 /* scripts.h */,
+				1A09672319EB315600C52AA1 /* state_widget.lua */,
 			);
 			name = Source;
 			path = src;
@@ -183,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A7902C11617341F005FB132 /* Build configuration list for PBXNativeTarget "Hamilton" */;
 			buildPhases = (
+				1A09671E19EB30DB00C52AA1 /* Compile Scripts */,
 				1A79029F1617341F005FB132 /* Sources */,
 				1A7902A01617341F005FB132 /* Frameworks */,
 				1A7902A11617341F005FB132 /* Resources */,
@@ -203,7 +216,7 @@
 		1A79029A1617341F005FB132 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "James Deery";
 			};
 			buildConfigurationList = 1A79029D1617341F005FB132 /* Build configuration list for PBXProject "Hamilton UI" */;
@@ -251,11 +264,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A7902F11617612A005FB132 /* main.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A09671E19EB30DB00C52AA1 /* Compile Scripts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/src/band_state.lua",
+				"$(SRCROOT)/src/icons.lua",
+				"$(SRCROOT)/src/main.lua",
+				"$(SRCROOT)/src/play_head.lua",
+				"$(SRCROOT)/src/state_widget.lua",
+			);
+			name = "Compile Scripts";
+			outputPaths = (
+				"$(SRCROOT)/src/scripts.derived.c",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/python;
+			shellScript = "import os, sys\nsys.path.append(os.environ['PROJECT_DIR'] + '/hamilton/alice')\nimport compile_resources\n\ncompile_resources.run_xcode_rule()";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A79029F1617341F005FB132 /* Sources */ = {
@@ -263,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A7902D81617361C005FB132 /* main.c in Sources */,
+				1A09672A19EB323F00C52AA1 /* scripts.derived.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +310,7 @@
 			baseConfigurationReference = 1A7BEAA316FD1647008B3BCB /* Debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
