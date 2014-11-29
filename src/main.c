@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
 	TRY(AL_SCRIPT_RUN(L, band_state));
 	TRY(AL_SCRIPT_RUN(L, play_head));
 	TRY(AL_SCRIPT_RUN(L, state_widget));
+	TRY(AL_SCRIPT_RUN(L, seq_widget));
 
 	TRY(AL_SCRIPT_RUN(L, main));
 

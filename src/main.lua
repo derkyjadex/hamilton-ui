@@ -25,29 +25,32 @@ end
 
 local function HamiltonUI(root, app)
 	root:fill_colour(0.2, 0.2, 0.2, 1.0)
-		:grid_size(100, 1000)
-		:grid_offset(0, -1)
-		:grid_colour(0.5, 0.5, 0.5)
-
-	StateWidget(app.band_state)
-		:add_to(root)
-		:layout(0, nil, nil, 0, nil, nil)
 
 	PlayHead(app.band_state)
 		:add_to(root)
 
-	Toolbar():add_to(root)
+	Toolbar()
+		:add_to(root)
 		:add_button(0.1, 0.8, 0.3, Icons.play, hm.play)
 		:add_button(0.9, 0.7, 0.2, Icons.pause, hm.pause)
 		:add_spacer()
 		:add_button(0.9, 0.3, 0.1, Icons.exit, host.exit)
 		:layout(10, nil, nil, nil, nil, 10)
 
+	SeqWidget(1)
+		:add_to(root)
+		:layout(0, nil, 0, 0, 200, nil)
+
+	SeqWidget(2)
+		:add_to(root)
+		:layout(0, nil, 0, 250, 250, nil)
+
+	StateWidget(app.band_state)
+		:add_to(root)
+		:layout(0, nil, nil, 0, nil, nil)
+
 	return root
 end
-
-local app = Hamilton()
-HamiltonUI(Widget.root(), app)
 
 local synths = hm.get_synths()
 hm.set_synth(1, synths[1])
@@ -74,5 +77,9 @@ hm.add_note(2, 03500, 200, 58, 0.7)
 
 hm.seq_commit()
 
+local app = Hamilton()
+HamiltonUI(Widget.root(), app)
+
 app.band_state:loop(00000, 04000)
 app.band_state:looping(true)
+

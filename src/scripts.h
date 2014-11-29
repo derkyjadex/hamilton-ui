@@ -13,6 +13,7 @@ AL_SCRIPT_DECLARE(icons)
 AL_SCRIPT_DECLARE(band_state)
 AL_SCRIPT_DECLARE(play_head)
 AL_SCRIPT_DECLARE(state_widget)
+AL_SCRIPT_DECLARE(seq_widget)
 
 AL_SCRIPT_DECLARE(main)
 

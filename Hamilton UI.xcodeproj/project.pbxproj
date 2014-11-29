@@ -57,6 +57,7 @@
 		1A09671F19EB315600C52AA1 /* band_state.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = band_state.lua; sourceTree = "<group>"; };
 		1A09672019EB315600C52AA1 /* icons.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icons.lua; sourceTree = "<group>"; };
 		1A09672119EB315600C52AA1 /* play_head.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = play_head.lua; sourceTree = "<group>"; };
+		1A09672219EB315600C52AA1 /* seq_widget.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seq_widget.lua; sourceTree = "<group>"; };
 		1A09672319EB315600C52AA1 /* state_widget.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = state_widget.lua; sourceTree = "<group>"; };
 		1A09672919EB323F00C52AA1 /* scripts.derived.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scripts.derived.c; sourceTree = "<group>"; };
 		1A09672B19EB326B00C52AA1 /* scripts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scripts.h; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 				1A09672119EB315600C52AA1 /* play_head.lua */,
 				1A09672919EB323F00C52AA1 /* scripts.derived.c */,
 				1A09672B19EB326B00C52AA1 /* scripts.h */,
+				1A09672219EB315600C52AA1 /* seq_widget.lua */,
 				1A09672319EB315600C52AA1 /* state_widget.lua */,
 			);
 			name = Source;
@@ -280,6 +282,7 @@
 				"$(SRCROOT)/src/icons.lua",
 				"$(SRCROOT)/src/main.lua",
 				"$(SRCROOT)/src/play_head.lua",
+				"$(SRCROOT)/src/seq_widget.lua",
 				"$(SRCROOT)/src/state_widget.lua",
 			);
 			name = "Compile Scripts";
