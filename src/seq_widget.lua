@@ -85,6 +85,44 @@ SeqWidget = Widget:derive(function(self, channel)
 		update_transform()
 	end
 
+	self:bind_down(function(_, x, y)
+		local time_scale, note_scale = scale()
+		local time_pan, note_pan = pan()
+
+		local note = {
+			channel = channel,
+			type = 'note',
+			time = (x / time_scale) - time_pan,
+			num = math.floor((y / note_scale) - note_pan),
+			length = 200,
+			velocity = 0.7
+		}
+
+		local note_widget = make_note_widget(note)
+
+		local orig_x, orig_y = self:grab_mouse()
+		self:bind_motion(function(_, motion_x, motion_y)
+			note.length = clamp(note.length + (motion_x / time_scale), 50, nil)
+			note.velocity = clamp(note.velocity + (motion_y / 100), 0, 1)
+
+			transform_note(note_widget)
+			note_widget:fill_colour(note_colour(note))
+		end)
+
+		self:bind_up(function()
+			self:release_mouse(orig_x, orig_y)
+			self:bind_up(nil)
+			self:bind_motion(nil)
+
+			note_widget:remove()
+
+			hm.add_note(note.channel, note.time, note.length, note.num, note.velocity)
+			self:refresh_notes()
+
+			hm.seq_commit()
+		end)
+	end)
+
 	update_transform()
 	self:refresh_notes()
 end)
