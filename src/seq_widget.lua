@@ -15,19 +15,18 @@ SeqWidget = Widget:derive(function(self, channel)
 	local scale = function() return 0.2, 10 end
 	local pan = function() return 0, -50 end
 
-	local function transform_note(note)
+	local function transform_note(widget)
+		local note = widget.note
 		local time_scale, note_scale = scale()
 		local time_pan, note_pan = pan()
 
-		for _, note in ipairs(notes) do
-			local left = (note.time + time_pan) * time_scale
-			local width = note.length * time_scale
-			local bottom = (note.num + note_pan) * math.floor(note_scale)
-			local height = note_scale + 1
+		local left = (note.time + time_pan) * time_scale
+		local width = note.length * time_scale
+		local bottom = (note.num + note_pan) * math.floor(note_scale)
+		local height = note_scale + 1
 
-			note:layout(left, width, nil, bottom, height, nil)
-				:invalidate()
-		end
+		widget:layout(left, width, nil, bottom, height, nil)
+			:invalidate()
 	end
 
 	local function update_transform()
@@ -51,6 +50,19 @@ SeqWidget = Widget:derive(function(self, channel)
 			mix(min, max, note.velocity))
 	end
 
+	local function make_note_widget(note)
+		local widget = Widget()
+			:add_to(self)
+			:fill_colour(note_colour(note))
+			:border_width(1)
+			:border_colour(0, 0, 0, 1)
+
+		widget.note = note
+		transform_note(widget)
+
+		return widget
+	end
+
 	function self:refresh_notes()
 		for _, note in ipairs(notes) do
 			note:remove()
@@ -59,30 +71,19 @@ SeqWidget = Widget:derive(function(self, channel)
 
 		for _, e in ipairs(hm.get_seq_items()) do
 			if e.channel == channel and e.type == 'note' then
-				local note = Widget()
-					:add_to(self)
-					:fill_colour(note_colour(e))
-					:border_width(1)
-					:border_colour(0, 0, 0, 1)
+				local widget = make_note_widget(e)
 
-				note.time = e.time
-				note.length = e.length
-				note.num = e.num
-				note.velocity = e.velocity
-
-				transform_note(note)
-
-				table.insert(notes, note)
+				table.insert(notes, widget)
 			end
 		end
 
 		return self
 	end
 
-    function self:layout(left, width, right, bottom, height, top, offset_x, offset_y)
-       Widget.prototype.layout(self, left, width, right, bottom, height, top, offset_x, offset_y)
-       update_transform()
-    end
+	function self:layout(...)
+		Widget.prototype.layout(self, ...)
+		update_transform()
+	end
 
 	update_transform()
 	self:refresh_notes()
